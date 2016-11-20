@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- 配置项目名称 -->
+	<display-name>cart</display-name>
+
+	<!-- 配置欢迎页面 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 配置过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>cn.com.yves.filter.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>requestEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>responseEncoding</param-name>
+			<param-value>text/html;charset=UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+
+	<!-- 配置标签库: (如果项目中使用到标签库就要配置,也可以配置所有的tld,taglib-location为tld文件所在的本地位置): -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/fmt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/fmt-rt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/c-rt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/sql.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/sql-rt</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/sql-rt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/x.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
+			<taglib-location>/WEB-INF/resource/tlds/x-rt.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<!-- 配置监听器 -->
+	<listener>
+	   <listener-class>cn.com.yves.listen.SessionListen</listener-class>
+	</listener>
+
+	<!-- 配置servlet -->
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>UserControl</servlet-name>
+		<servlet-class>cn.com.yves.control.UserControl</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>CartControl</servlet-name>
+		<servlet-class>cn.com.yves.control.CartControl</servlet-class>
+	</servlet>
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>UserControl</servlet-name>
+		<url-pattern>/userControl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CartControl</servlet-name>
+		<url-pattern>/cartControl</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+
+</web-app>
